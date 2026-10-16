@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cadastro de Usuário</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='cadastro_usuario.css') }}">
+</head>
+<body>
+
+    <main class="container">
+        <section class="card-cadastro">
+
+            <h1>Criar conta</h1>
+            <p class="subtitulo">Preencha os dados para se cadastrar.</p>
+
+            {% with mensagens = get_flashed_messages() %}
+                {% if mensagens %}
+                    {% for mensagem in mensagens %}
+                        <p class="mensagem">{{ mensagem }}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+            <form action="/usuarios/cadastrar" method="POST">
+
+                <div class="campo">
+                    <label for="nome">Nome completo</label>
+                    <input
+                        type="text"
+                        id="nome"
+                        name="nome"
+                        placeholder="Digite seu nome"
+                        maxlength="100"
+                        required
+                    >
+                </div>
+
+                <div class="campo">
+                    <label for="email">E-mail</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="seuemail@exemplo.com"
+                        maxlength="100"
+                        required
+                    >
+                </div>
+
+                <div class="campo">
+                    <label for="senha">Senha</label>
+                    <input
+                        type="password"
+                        id="senha"
+                        name="senha"
+                        placeholder="Crie uma senha"
+                        required
+                    >
+                </div>
+
+                <button type="submit">Cadastrar</button>
+
+            </form>
+
+            <p class="rodape">
+                Já tem uma conta? <a href="#">Faça login</a>
+            </p>
+
+        </section>
+    </main>
+
+</body>
+</html>
