@@ -10,3 +10,6 @@ def cadastrar(usuario: Usuarios):
     db.session.commit()
 
     return usuario
+
+def buscar_por_email(email: str):
+    db.session.query(Usuarios).filter(Usuarios.email == email).all()
