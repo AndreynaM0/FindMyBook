@@ -1,10 +1,73 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='login.css') }}">
 </head>
 <body>
+
+    <main class="container">
+        <section class="card-login">
+
+            <h1>Bem-vindo de volta!</h1>
+
+            <p class="subtitulo">
+                Entre com seus dados para acessar sua conta.
+            </p>
+
+            {% with mensagens = get_flashed_messages() %}
+                {% if mensagens %}
+                    {% for mensagem in mensagens %}
+                        <p class="mensagem">{{ mensagem }}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+            <form action="/login" method="POST">
+
+                <div class="campo">
+                    <label for="email">E-mail</label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="seuemail@exemplo.com"
+                        required
+                    >
+                </div>
+
+                <div class="campo">
+                    <label for="senha">Senha</label>
+
+                    <input
+                        type="password"
+                        id="senha"
+                        name="senha"
+                        placeholder="Digite sua senha"
+                        required
+                    >
+                </div>
+
+                <button type="submit">Entrar</button>
+
+            </form>
+
+            <p class="rodape">
+                Ainda não tem uma conta?
+                <a href="{{ url_for('login.cadastroUsuario') }}">
+                    Cadastre-se
+                </a>
+            </p>
+
+        </section>
+    </main>
 
 </body>
 </html>

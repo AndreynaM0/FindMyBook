@@ -1,12 +1,13 @@
 from mimetypes import init
 
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from config import Config, db
+from controllers.livro_controller import livro_controller
 from controllers.login_controller import login_controller
 from models.usuarios_model import Usuarios
 from repositories import user_DAO
-from flask_login import LoginManager
+from flask_login import LoginManager,current_user
 
 app = Flask(__name__)
 
@@ -27,13 +28,20 @@ def load_user(user_id):
     except Exception:
         return None
 
+@login_manager.unauthorized_handler
+def acesso_nao_autorizado():
+    return redirect(url_for('login.login'))
+
 @app.route('/')
 def principal():
-    return render_template('index.html')
+    if(current_user.is_authenticated):
+        return redirect(url_for("livro.buscar"))
+    else:
+        return redirect(url_for("login.login"))
 
 
 app.register_blueprint(login_controller, url_prefix='/login')
-
+app.register_blueprint(livro_controller, url_prefix='/livro')
 
 
 if __name__ == '__main__':
