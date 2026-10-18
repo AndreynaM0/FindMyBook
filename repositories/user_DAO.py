@@ -1,15 +1,23 @@
 from config import db
 from models.usuarios_model import Usuarios
+from sqlalchemy.exc import NoResultFound
 
 
 def cadastrar(usuario: Usuarios):
 
-    # db.session.execute(db.select(Usuarios).where(Usuarios.email == usuario.email)).scalars()
+    user = buscar_por_email(usuario.email)
+    if user is None:
+        db.session.add(usuario)
+        db.session.commit()
+        return usuario
+    else:
+        return None
 
-    db.session.add(usuario)
-    db.session.commit()
+def buscar_por_email(email: str) -> Usuarios:
 
-    return usuario
+    try:
+        user = db.session.execute(db.select(Usuarios).filter_by(email=email)).scalar_one()
+        return user
+    except NoResultFound:
+        return None
 
-def buscar_por_email(email: str):
-    db.session.query(Usuarios).filter(Usuarios.email == email).all()
