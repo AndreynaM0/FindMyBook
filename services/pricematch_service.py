@@ -1,10 +1,10 @@
 import requests
 
 def get_livros(pesquisa):
-    url = "https://pricematch.dnltech.dev/products/search"
+    url = "https://pricematch.dnltech.dev/api/products/search"
 
     try:
-        response = requests.get(url,params={"produto":pesquisa}, timeout=10)
+        response = requests.get(url,params={"produto":f"Livro {pesquisa}"}, timeout=10)
         response.raise_for_status()
 
         dados = response.json()
@@ -46,4 +46,5 @@ def get_livros(pesquisa):
 
 if(__name__ == "__main__"):
     pesquisa = input("Insira o nome do livro: ")
-    get_livros(pesquisa)
+    resultadoLivro= get_livros(pesquisa)
+    print(resultadoLivro)
