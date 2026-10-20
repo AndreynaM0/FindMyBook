@@ -1,5 +1,5 @@
-Flask
-Flask-Login
+flask
+flask-Login
 Flask-SQLAlchemy
 psycopg2-binary
 requests
