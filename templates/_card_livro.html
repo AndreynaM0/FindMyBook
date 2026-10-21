@@ -1,0 +1,39 @@
+{% macro card_livro(livro) %}
+<article class="card-livro">
+
+    {% if livro.imagem %}
+    <div class="capa-livro">
+        <img src="{{ livro.imagem }}" alt="{{ livro.titulo }}" loading="lazy">
+    </div>
+    {% endif %}
+
+    <div class="info-livro">
+
+        <h3>{{ livro.titulo }}</h3>
+
+        <p class="preco-minimo">
+            <strong>Menor preço:</strong>
+            {% if livro.preco_minimo is not none %}
+                R$ {{ "%.2f"|format(livro.preco_minimo)|replace(".", ",") }}
+            {% else %}
+                Não informado
+            {% endif %}
+        </p>
+
+        <p><strong>Lojas:</strong></p>
+
+        <ul class="lista-lojas">
+            {% for loja in livro.lojas %}
+            <li>
+                <a href="{{ loja.url }}" target="_blank" rel="noopener">{{ loja.nome }}</a>
+                {% if loja.price is not none %}
+                    <span>R$ {{ "%.2f"|format(loja.price)|replace(".", ",") }}</span>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+
+    </div>
+
+</article>
+{% endmacro %}

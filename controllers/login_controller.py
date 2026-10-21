@@ -24,7 +24,7 @@ def cadastroUsuario():
         return render_template('cadastroUsuario.html')
     else:
         login_user(usuario_cadastrado)
-        return redirect(url_for("/livro"))
+        return redirect(url_for("livro.buscar"))
 
 
 @login_controller.route('/', methods=['GET', 'POST'])

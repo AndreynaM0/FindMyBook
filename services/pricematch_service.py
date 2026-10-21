@@ -1,15 +1,18 @@
+from typing import Any
 import requests
+import json
 
 def get_livros(pesquisa):
-    url = "https://pricematch.dnltech.dev/products/search"
+    url = "https://pricematch.dnltech.dev/api/products/search"
 
     try:
         response = requests.get(url,params={"produto":pesquisa}, timeout=10)
         response.raise_for_status()
 
         dados = response.json()
+        print("DADOS DA API:", dados)
 
-        livros = []
+        livros: list[Any] = []
         for livro in dados:
             lojas= livro.get("loja", [])
 
@@ -21,7 +24,9 @@ def get_livros(pesquisa):
             livros.append({
                 "titulo": livro.get("titulo"),
                 "moeda": livro.get("moeda", "BRL"),
-                "lojas": lojas
+                "imagem": livro.get("imagem"),
+                "lojas": lojas,
+                "preco_minimo": lojas[0].get("price") if lojas else None
             })
 
         return livros
@@ -30,20 +35,6 @@ def get_livros(pesquisa):
         print(f"Erro ao consultar a API: {e}")
         return []
 
-    # if():
-    #     livros.append(livro)
-    #
-    # livros=[{
-    #     "isbn": livro["key"].split("/")[2] if "key" in livro else None,
-    #     "autor":livro["author_name"][0] if "author_name" in livro else None,
-    #     "titulo":livro["title"] if "title" in livro else None,
-    #     "anoPublicado":livro["first_publish_year"] if "first_publish_year" in livro else None,
-    #     "linguagem":livro["language"] if "language" in livro else None,
-    #     }for livro in response.json()["docs"]]
-    # print(livros)
-    # return livros
-
-
-if(__name__ == "__main__"):
+if __name__ == "__main__":
     pesquisa = input("Insira o nome do livro: ")
-    get_livros(pesquisa)
+    print(get_livros(pesquisa))

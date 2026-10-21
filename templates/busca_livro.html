@@ -1,3 +1,4 @@
+{% from "_card_livro.html" import card_livro %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -14,7 +15,6 @@
 
  <header class="cabecalho">
     <div class="cabecalho-conteudo">
-
         <div class="titulo-site">
             <h1>Fynd My Book</h1>
             <p>Encontre seu próximo livro favorito.</p>
@@ -31,13 +31,10 @@
                 </button>
             </form>
         </nav>
-
     </div>
 </header>
 
-
     <main class="container">
-
 
         <section class="area-busca">
             <h2>Buscar livros</h2>
@@ -63,54 +60,19 @@
 
 
         {% if livros is defined %}
-
             <section class="resultados">
 
                 <h2>Resultados da busca</h2>
-
                 {% if livros %}
-
                     <div class="lista-livros">
-
                         {% for livro in livros %}
 
-                            <article class="card-livro">
-
-                                <h3>
-                                    {{ livro.titulo or 'Título não informado' }}
-                                </h3>
-
-                                <p>
-                                    <strong>Autor:</strong>
-                                    {{ livro.autor or 'Não informado' }}
-                                </p>
-
-                                <p>
-                                    <strong>Ano de publicação:</strong>
-                                    {{ livro.anoPublicado or 'Não informado' }}
-                                </p>
-
-                                <p>
-                                    <strong>ISBN:</strong>
-                                    {{ livro.isbn or 'Não informado' }}
-                                </p>
-
-                                <p>
-                                    <strong>Idioma:</strong>
-
-                                    {% if livro.linguagem %}
-                                        {{ livro.linguagem | join(', ') if livro.linguagem is sequence and livro.linguagem is not string else livro.linguagem }}
-                                    {% else %}
-                                        Não informado
-                                    {% endif %}
-                                </p>
-
-                            </article>
+                            {% for livro in livros %}
+                                {{ card_livro(livro) }}
+                            {% endfor %}
 
                         {% endfor %}
-
                     </div>
-
                 {% else %}
 
                     <p class="sem-resultados">
@@ -119,9 +81,7 @@
                     </p>
 
                 {% endif %}
-
             </section>
-
         {% endif %}
 
     </main>

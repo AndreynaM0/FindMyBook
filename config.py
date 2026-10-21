@@ -7,4 +7,3 @@ class Config:
 
 
 db = SQLAlchemy()
-
