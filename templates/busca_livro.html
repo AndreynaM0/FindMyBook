@@ -68,7 +68,7 @@
                         {% for livro in livros %}
 
                             {% for livro in livros %}
-                                {{ card_livro(livro) }}
+                                {{ card_livro(livro, livro.titulo in favoritos) }}
                             {% endfor %}
 
                         {% endfor %}
@@ -89,6 +89,6 @@
     <footer class="rodape">
         <p>FyndMyBook &copy; 2026</p>
     </footer>
-
+<script src="{{ url_for('static', filename='favoritos.js') }}"></script>
 </body>
 </html>

@@ -1,6 +1,5 @@
 from typing import Any
 import requests
-import json
 
 def get_livros(pesquisa):
     url = "https://pricematch.dnltech.dev/api/products/search"
@@ -10,7 +9,6 @@ def get_livros(pesquisa):
         response.raise_for_status()
 
         dados = response.json()
-        print("DADOS DA API:", dados)
 
         livros: list[Any] = []
         for livro in dados:
