@@ -5,7 +5,7 @@ def get_livros(pesquisa):
     url = "https://pricematch.dnltech.dev/api/products/search"
 
     try:
-        response = requests.get(url,params={"produto":pesquisa}, timeout=10)
+        response = requests.get(url,params={"produto":f"Livro {pesquisa}"}, timeout=10)
         response.raise_for_status()
 
         dados = response.json()
