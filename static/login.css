@@ -6,10 +6,9 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #eff8f5;
-    color: #243b36;
+    background-color: #FFF9F2;
+    color: #800020;
 }
-
 
 .container {
     min-height: 100vh;
@@ -19,35 +18,29 @@ body {
     padding: 20px;
 }
 
-
-
 .card-login {
     background-color: #ffffff;
     width: 100%;
     max-width: 420px;
     padding: 35px;
     border-radius: 16px;
-    border-top: 5px solid #20a486;
+    border-top: 5px solid #800020;
     box-shadow: 0 10px 30px rgba(29, 87, 72, 0.10);
 }
-
 
 h1 {
     text-align: center;
     margin-bottom: 10px;
-    color: #176b5b;
+    color: #800020;
 }
-
 
 .subtitulo {
     text-align: center;
-    color: #71827d;
+    color: #800020;
     margin-bottom: 28px;
     font-size: 14px;
     line-height: 1.6;
 }
-
-
 
 .campo {
     display: flex;
@@ -77,16 +70,14 @@ h1 {
 }
 
 .campo input:focus {
-    border-color: #20a486;
+    border-color: #800020;
     box-shadow: 0 0 0 3px rgba(32, 164, 134, 0.14);
 }
-
-
 
 button {
     width: 100%;
     padding: 13px;
-    background-color: #16866e;
+    background-color: #800020;
     color: #ffffff;
     border: none;
     border-radius: 8px;
@@ -97,39 +88,35 @@ button {
 }
 
 button:hover {
-    background-color: #106b58;
+    background-color: #800020;
 }
 
 button:active {
     transform: scale(0.98);
 }
 
-
-
 .rodape {
     margin-top: 22px;
     text-align: center;
     font-size: 14px;
     line-height: 1.6;
-    color: #71827d;
+    color: #000000;
 }
 
 .rodape a {
-    color: #16866e;
+    color: #800020;
     font-weight: bold;
     text-decoration: none;
 }
 
 .rodape a:hover {
-    color: #0d5c4b;
+    color: #800020;
     text-decoration: underline;
 }
 
-
-
 .mensagem {
-    background-color: #e0f5eb;
-    color: #176b4b;
+    background-color: #FFF9F2;
+    color: #800020;
     border: 1px solid #b9e6d0;
     padding: 12px;
     border-radius: 8px;
@@ -137,8 +124,6 @@ button:active {
     font-size: 14px;
     line-height: 1.5;
 }
-
-
 
 @media (max-width: 480px) {
     .card-login {

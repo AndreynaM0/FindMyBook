@@ -6,7 +6,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #eff8f5;
+    background-color: #FFF9F2;
     color: #243b36;
     min-height: 100vh;
     display: flex;
@@ -14,7 +14,7 @@ body {
 }
 
 .cabecalho {
-    background-color: #176b5b;
+    background-color: #800020;
     color: white;
     padding: 25px 5%;
 }
@@ -63,7 +63,7 @@ body {
 
 .menu .link-logout {
     background-color: white;
-    color: #176b5b;
+    color: #800020;
     padding: 10px 16px;
     border: none;
     border-radius: 8px;
@@ -91,13 +91,13 @@ body {
     background-color: #ffffff;
     padding: 28px;
     border-radius: 14px;
-    border-top: 4px solid #20a486;
+    border-top: 4px solid #800020;
     box-shadow: 0 8px 25px rgba(29, 87, 72, 0.08);
     margin-bottom: 35px;
 }
 
 .area-busca h2 {
-    color: #176b5b;
+    color: #800020;
     margin-bottom: 10px;
     font-size: 23px;
 }
@@ -128,18 +128,18 @@ body {
 }
 
 .area-busca input::placeholder {
-    color: #9aa9a3;
+    color: #800020;
 }
 
 .area-busca input:focus {
-    border-color: #20a486;
+    border-color: #800020;
     box-shadow: 0 0 0 3px rgba(32, 164, 134, 0.14);
 }
 
 
 .area-busca button {
     padding: 13px 25px;
-    background-color: #16866e;
+    background-color: #800020;
     color: white;
     border: none;
     border-radius: 8px;
@@ -150,7 +150,7 @@ body {
 }
 
 .area-busca button:hover {
-    background-color: #106b58;
+    background-color: #800020;
 }
 
 .area-busca button:active {
@@ -159,7 +159,7 @@ body {
 
 
 .resultados h2 {
-    color: #176b5b;
+    color: #800020;
     font-size: 23px;
     margin-bottom: 20px;
 }
@@ -178,7 +178,7 @@ body {
     background-color: #ffffff;
     padding: 24px;
     border-radius: 12px;
-    border-left: 5px solid #20a486;
+    border-left: 5px solid #800020;
     box-shadow: 0 5px 15px rgba(29, 87, 72, 0.06);
     overflow-wrap: anywhere;
     transition: transform 0.2s, box-shadow 0.2s;
@@ -190,7 +190,7 @@ body {
 }
 
 .card-livro h3 {
-    color: #176b5b;
+    color: #800020;
     font-size: 19px;
     line-height: 1.4;
     margin-bottom: 18px;
@@ -200,11 +200,11 @@ body {
     font-size: 14px;
     line-height: 1.6;
     margin-bottom: 12px;
-    color: #71827d;
+    color: #800020;
 }
 
 .card-livro strong {
-    color: #344e47;
+    color: #800020;
 }
 
 .capa-livro {
@@ -231,7 +231,7 @@ body {
 }
 
 .card-livro .preco-minimo {
-    color: #16866e;
+    color: #00d600;
 }
 
 .lista-lojas {
@@ -250,7 +250,7 @@ body {
 }
 
 .lista-lojas a {
-    color: #16866e;
+    color: #D45060;
     font-weight: bold;
     text-decoration: none;
 }
@@ -260,7 +260,7 @@ body {
 }
 
 .lista-lojas span {
-    color: #344e47;
+    color: #D45060;
     white-space: nowrap;
 }
 
@@ -268,8 +268,8 @@ body {
     background-color: #ffffff;
     padding: 25px;
     border-radius: 10px;
-    border-left: 4px solid #20a486;
-    color: #71827d;
+    border-left: 4px solid #800020;
+    color: #800020;
     text-align: center;
     line-height: 1.6;
     box-shadow: 0 5px 15px rgba(29, 87, 72, 0.05);
@@ -289,13 +289,13 @@ body {
 }
 
 .saudacao h2 {
-    color: #176b5b;
+    color: #800020;
     font-size: 28px;
     margin-bottom: 8px;
 }
 
 .sem-resultados a {
-    color: #16866e;
+    color: #800020;
     font-weight: bold;
 }
 
@@ -321,7 +321,7 @@ body {
 
 .btn-favorito svg {
     fill: none;
-    stroke: #16866e;
+    stroke: #800020;
     stroke-width: 2;
     transition: fill 0.2s, stroke 0.2s;
 }
