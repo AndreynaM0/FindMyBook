@@ -1,3 +1,4 @@
+from typing import Any
 import requests
 
 def get_livros(pesquisa):
@@ -9,7 +10,7 @@ def get_livros(pesquisa):
 
         dados = response.json()
 
-        livros = []
+        livros: list[Any] = []
         for livro in dados:
             lojas= livro.get("loja", [])
 
@@ -21,7 +22,9 @@ def get_livros(pesquisa):
             livros.append({
                 "titulo": livro.get("titulo"),
                 "moeda": livro.get("moeda", "BRL"),
-                "lojas": lojas
+                "imagem": livro.get("imagem"),
+                "lojas": lojas,
+                "preco_minimo": lojas[0].get("price") if lojas else None
             })
 
         return livros
@@ -30,21 +33,6 @@ def get_livros(pesquisa):
         print(f"Erro ao consultar a API: {e}")
         return []
 
-    # if():
-    #     livros.append(livro)
-    #
-    # livros=[{
-    #     "isbn": livro["key"].split("/")[2] if "key" in livro else None,
-    #     "autor":livro["author_name"][0] if "author_name" in livro else None,
-    #     "titulo":livro["title"] if "title" in livro else None,
-    #     "anoPublicado":livro["first_publish_year"] if "first_publish_year" in livro else None,
-    #     "linguagem":livro["language"] if "language" in livro else None,
-    #     }for livro in response.json()["docs"]]
-    # print(livros)
-    # return livros
-
-
-if(__name__ == "__main__"):
+if __name__ == "__main__":
     pesquisa = input("Insira o nome do livro: ")
-    resultadoLivro= get_livros(pesquisa)
-    print(resultadoLivro)
+    print(get_livros(pesquisa))

@@ -1,0 +1,51 @@
+{% macro card_livro(livro, favorito=False) %}
+<article class="card-livro">
+
+    <button type="button"
+            class="btn-favorito {{ 'ativo' if favorito }}"
+            data-titulo="{{ livro.titulo }}"
+            data-imagem="{{ livro.imagem or '' }}"
+            aria-pressed="{{ 'true' if favorito else 'false' }}"
+            aria-label="Favoritar livro">
+        <svg viewBox="0 0 24 24" width="22" height="22">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+    </button>
+
+    {% if livro.imagem %}
+    <div class="capa-livro">
+        <img src="{{ livro.imagem }}" alt="{{ livro.titulo }}" loading="lazy">
+    </div>
+    {% endif %}
+
+    <div class="info-livro">
+
+        <h3>{{ livro.titulo }}</h3>
+
+        <p class="preco-minimo">
+            <strong>Menor preço:</strong>
+            {% if livro.preco_minimo is not none %}
+                R$ {{ "%.2f"|format(livro.preco_minimo)|replace(".", ",") }}
+            {% else %}
+                Não informado
+            {% endif %}
+        </p>
+
+        {% if livro.lojas %}
+        <p><strong>Lojas:</strong></p>
+        <ul class="lista-lojas">
+            {% for loja in livro.lojas %}
+            <li>
+                <a href="{{ loja.url }}" target="_blank" rel="noopener">{{ loja.nome }}</a>
+                {% if loja.price is not none %}
+                    <span>R$ {{ "%.2f"|format(loja.price)|replace(".", ",") }}</span>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+    </div>
+
+</article>
+{% endmacro %}
